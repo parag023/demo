@@ -1,0 +1,51 @@
+﻿@model List<ApplicationDTO.UsersDTO>
+
+@{
+    ViewBag.Title = "Getuser";
+    Layout = "~/Views/Shared/_MstLayoutPage.cshtml";
+}
+
+<html>
+<head>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+	
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+
+</head>
+
+    <body>
+<span class="up-s">
+                @*<a href="#" class="btn">Add User</a>*@</span>
+<h2>Getuser</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>UserName</th>
+            <th>Password</th>
+            <th>User Role</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.name</td>
+                <td>@item.username</td>
+                <td>@item.password</td>
+                <td>@item.Userrole</td>
+                
+             <td>@Html.ActionLink("Edit", "UserRegistration", "MstTemplet", new { userid = item.userid.ToString() }, null)</td>
+                
+                             
+                
+            </tr>
+        }
+
+    </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,174 @@
+﻿@using ApplicationDTO;
+@using System.Web.Mvc;
+@model TechCommentDTO
+
+@{
+    ViewBag.Title = "TechComment";
+    Layout = "~/Views/Shared/_MstLayoutPage.cshtml";
+}
+
+
+<script>
+    var TechId = "@Model.TechId";
+    $(document).ready(function () {
+        if (TechId != "0") {
+            $('#ulTechComment li input').attr('disabled', 'disabled');
+            $('#ulTechComment li select').attr('disabled', 'disabled');
+            $('#ulTechComment li textarea[name="Solution1"]').attr('disabled', 'disabled');
+            $('#ulTechComment li textarea[name="Remark"]').attr('disabled', 'disabled');
+            //$('#ulUpdate').css('display', 'none');
+            //$('#ulAddComment').css('display', 'flex');    
+        }
+        //if (roleId == "3") {
+        //    $('#ulTechComment').hide();
+        //}
+    });
+</script>
+<script type="text/javascript">
+
+    $.ajaxSetup({ cache: false });
+
+    $(document).ready(function () {
+        $(".openDialog").live("click", function (e) {
+            e.preventDefault();
+
+            $("<div></div>")
+                .addClass("dialog")
+                .attr("id", $(this)
+                .attr("data-dialog-id"))
+                .appendTo("body")
+                .dialog({
+                    title: $(this).attr("data-dialog-title"),
+                    close: function () { $(this).remove(); },
+                    modal: true,
+                    height: 500,
+                    width: 800,
+                    left: 0
+
+                })
+            .load(this.href);
+        });
+
+        $(".close").live("click", function (e) {
+            e.preventDefault();
+            $(this).closest(".dialog").dialog("close");
+        });
+    });
+</script>
+@using (Html.BeginForm("TechComment", "MstTemplet", FormMethod.Post))
+{
+    
+@*<form method="post" action="Newticket">*@
+    <div class="content2">
+        <div class="upper">
+            @*<h2>New Ticket<span class="up-s">
+                <input type="search" id="search" placeholder="Search..." /><a href=""><img src="~/Content/images/Search.png" /></a></span>
+
+            </h2>*@
+            <div class="inner-content2">
+                <div class="Border">
+                    <center><h3>@ViewBag.CutomerList[0].Username Comment</h3></center>
+                    <ul>
+                         @Html.Hidden("TicketId", @Request.QueryString["TicketId"]as String)
+                        @Html.Hidden("CustomerID", @Request.QueryString["CustomerID"] as String)
+                        @Html.Hidden("ProductId", @Request.QueryString["ProductId"] as String)
+                        <li>
+                            <h3>Customer Name</h3>
+                            <input class="inp-big" type="text" name="CustomerName"  value="@ViewBag.CutomerList[0].CustomerName" size="17"  autocomplete="off" disabled>
+                        </li>
+                        <li>
+                            <h3>E-Mail</h3>
+                            <input class="inp-big" type="text" name="EmailId" value="@ViewBag.CutomerList[0].EmailId" size="17"  autocomplete="off" disabled>
+                        </li>
+                        <li>
+                            <h3>Contact No</h3>
+                            <input type="text" name="ContactNo" value="@ViewBag.CutomerList[0].ContanctNo" size="17" style="font-size: 13pt; height: 30px; width: 179px;" autocomplete="off" disabled>
+                        </li>
+                        <li>
+                            <h3>Account Number</h3>
+                            <input class="acno" type="text" name="AccountNo" value="@ViewBag.CutomerList[0].AccountNo" size="17" autocomplete="off" disabled>
+                        </li>
+                        <li>
+                            <h3>CallType</h3>
+                            <input class="nos" type="text" name="CallType" value="@ViewBag.ProductList[0].CallType" size="17" autocomplete="off" disabled>
+                        </li>
+                        <li>
+                            <h3>Sub CallType</h3>
+                            <input class="nos" type="text" name="SubCallType" value="@ViewBag.ProductList[0].SubCallType" size="17" autocomplete="off" disabled>
+                        </li>
+                        <li>
+                            <h3>Subscription Type</h3>
+                            <input class="nos" type="text" name="SubcriptionType" value="@ViewBag.ProductList[0].SubcriptionType" size="17" autocomplete="off" disabled>
+                        </li>
+                        <li>
+                            <h3>No Of System</h3>
+                            <input class="nos" type="text" name="NoOfSystem" value="@ViewBag.ProductList[0].NoOfSystem" size="17" autocomplete="off" disabled>
+                        </li>
+                        <li>
+                            <h3>Payment Mode</h3>
+                            <input class="nos" type="text" name="PaymentMode" value="@ViewBag.ProductList[0].PaymentMode" size="17"autocomplete="off"  disabled>
+                        </li>
+                        <li>
+                            <h3>CallStatus</h3>
+                            <input class="nos" type="text" name="CallStatus" value="@ViewBag.ProductList[0].CallStatus" size="17" autocomplete="off" disabled>
+                        </li>
+                    </ul>
+                </div>
+                <div class="space"></div>
+                <div class="Border">
+                    <ul id="ulsalesComment">
+                      <li>
+                      @*@Html.ActionLink("ViewRemark","TicketHistory","MstTemplet",new { Id = @ViewBag.Ticketlist[0].Id }, new {})*@
+                          @Html.ActionLink("ViewRemark", "TicketHistory", "MstTemplet", new { TicketId = @ViewBag.Ticketlist[0].TicketId }, new { @class = "openDialog", data_dialog_id = "History", data_dialog_title = "RemarkHistory" })
+                      </li>
+                     
+                    </ul>                               
+                   
+                </div>
+                <div class="space"></div>
+                <div class="Border">
+                    <ul id="ulTechComment">
+                        <center><h3>@Session["username"] Comment</h3></center>
+                        <li>
+                        <h3>Dispostion Case</h3>
+                            @Html.DropDownList("RefundType", new SelectList(ViewBag.RefundeType, "value", "text", "--Select DispotionCase--"), new { @class = "s-hov" })
+                        </li>
+                        <li>
+                        <h3>Assign To</h3>
+                         @Html.DropDownList("AssignTo", new SelectList(ViewBag.AssignTo, "value", "text", "--Select AssignTo--"), new { @class = "s-hov" })
+                        </li>
+                        <li>
+                        <h3>Solution</h3>
+                        @Html.TextArea("Solution1",@Model.TechSolution,new {cols="40", rows="6", style="width: 900px;" })
+                        </li>
+                        <li>
+                        <h3>Remark</h3>
+                        @Html.TextArea("Remark", @Model.TechRemark,new {cols="40", rows="6", style="width: 900px;" })
+                        </li>
+                    </ul>
+                </div>
+
+                <ul class="submit-bt" id="ulUpdate">
+                    @*<a href="#" class="btn">Submit</a>*@
+
+                  @*  @if(@Model.Id > 0)
+                    {
+                        <input type="submit" id="btnUpdateTicket" name="Command" value="UpdateTicket" class="button" />
+                    }
+                    else
+                    {
+                        <input type="submit" id="btnInsertTicket" name="Command" value="AddTicket" class="button" />
+                    }*@
+                    <input type="submit" id="btnAddComment" name="Command" value="AddComment" class="button" />
+                </ul>
+              @*  <ul class="submit-bt" id="ulAddComment" style="display: none;">
+                    <input type="submit" id="btnAddComment" name="Command" value="Add Comment" class="button" />
+                </ul>*@
+            </div>
+        </div>
+        <div class="">
+        </div>
+    </div>
+@*</form>*@
+}
+

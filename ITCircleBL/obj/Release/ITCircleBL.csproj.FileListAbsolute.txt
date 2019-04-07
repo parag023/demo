@@ -1,0 +1,12 @@
+E:\ITCircleCRM\ITCircleBL\bin\Release\ITCircleBL.dll
+E:\ITCircleCRM\ITCircleBL\bin\Release\ITCircleBL.pdb
+E:\ITCircleCRM\ITCircleBL\bin\Release\ApplicationDTO.dll
+E:\ITCircleCRM\ITCircleBL\bin\Release\ITCircleDAO.dll
+E:\ITCircleCRM\ITCircleBL\bin\Release\Dapper.dll
+E:\ITCircleCRM\ITCircleBL\bin\Release\ApplicationDTO.pdb
+E:\ITCircleCRM\ITCircleBL\bin\Release\ITCircleDAO.pdb
+E:\ITCircleCRM\ITCircleBL\bin\Release\Dapper.pdb
+E:\ITCircleCRM\ITCircleBL\bin\Release\Dapper.xml
+E:\ITCircleCRM\ITCircleBL\obj\Release\ITCircleBL.csprojResolveAssemblyReference.cache
+E:\ITCircleCRM\ITCircleBL\obj\Release\ITCircleBL.dll
+E:\ITCircleCRM\ITCircleBL\obj\Release\ITCircleBL.pdb

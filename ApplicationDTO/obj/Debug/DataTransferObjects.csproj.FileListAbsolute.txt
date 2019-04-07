@@ -1,0 +1,15 @@
+D:\ITCircleCRM\ApplicationDTO\bin\Debug\ApplicationDTO.dll
+D:\ITCircleCRM\ApplicationDTO\bin\Debug\ApplicationDTO.pdb
+D:\ITCircleCRM\ApplicationDTO\obj\Debug\DataTransferObjects.csprojResolveAssemblyReference.cache
+D:\ITCircleCRM\ApplicationDTO\obj\Debug\ApplicationDTO.dll
+D:\ITCircleCRM\ApplicationDTO\obj\Debug\ApplicationDTO.pdb
+E:\ITCircleCRM\ApplicationDTO\bin\Debug\ApplicationDTO.dll
+E:\ITCircleCRM\ApplicationDTO\bin\Debug\ApplicationDTO.pdb
+E:\ITCircleCRM\ApplicationDTO\obj\Debug\DataTransferObjects.csprojResolveAssemblyReference.cache
+E:\ITCircleCRM\ApplicationDTO\obj\Debug\ApplicationDTO.dll
+E:\ITCircleCRM\ApplicationDTO\obj\Debug\ApplicationDTO.pdb
+D:\CRM_Parag\ITCircleCRM\ApplicationDTO\bin\Debug\ApplicationDTO.dll
+D:\CRM_Parag\ITCircleCRM\ApplicationDTO\bin\Debug\ApplicationDTO.pdb
+D:\CRM_Parag\ITCircleCRM\ApplicationDTO\obj\Debug\DataTransferObjects.csprojResolveAssemblyReference.cache
+D:\CRM_Parag\ITCircleCRM\ApplicationDTO\obj\Debug\ApplicationDTO.dll
+D:\CRM_Parag\ITCircleCRM\ApplicationDTO\obj\Debug\ApplicationDTO.pdb

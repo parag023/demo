@@ -1,0 +1,94 @@
+﻿
+<html>
+<head>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/Content/css/style.css")" rel="stylesheet" type="text/css"/>
+	<link href="style.css" rel="stylesheet" type="text/css"/>
+
+</head>
+
+<body onload="slideA()">
+<div class="outer">
+<div class="outerin">
+<header class="head">
+				<div class="navi-main">
+						<div class="follow-box">
+								<div class="head-left">
+									<a href="@Url.Action("Index", "MstTemplet")" class="btn">  DashBoard  </a>
+								</div>
+								<div class="head-logo">
+									<h1 class="nav-brand">
+										<a href="@Url.Action("Index", "MstTemplet")">
+											<img src="~/Content/images/Logo.png">
+										</a>
+									</h1>
+								</div>
+								<div class="head-right">
+								<a href="#"><img src="logoutimg.png" height="45px" width="45px" title="LogOut"></a><br>
+									<label>Welcome user </label>
+								</div>
+						</div>
+				</div>
+		</header>
+		<div class="container1">
+		</div>
+		<div class="container2">
+				<div class="content1">
+					<div class="content1-inner">
+							<ul>
+								<li>
+									<a href="@Url.Action("CustomerRegistration", "MstTemplet")" class="btn">New Customer</a>
+								</li>
+								<li>
+									<a href="#" class="btn">Manage Customer</a>						
+								</li>
+								<li>
+									<a href="@Url.Action("NewTicket", "MstTemplet")" class="btn">New Ticket</a>
+								</li>
+								<li>
+									<a href="#" class="btn">Manage Ticket</a>						
+								</li>								
+                                <li>
+									<a href="@Url.Action("UserRegistration", "MstTemplet")" class="btn">New User</a>						
+								</li>
+								<li>
+									<a href="#" class="btn">Manage User</a>						
+								</li>
+								
+								<li>
+									<a href="#" class="btn">Manage</a>						
+								</li>
+								<li>
+									<!-- <a href="#" class="btn">Chat</a> -->
+								</li>
+								<li>
+									<!-- <a href="#" class="btn">Reports</a> -->
+								</li>
+								<li>
+									<!-- <a href="#" class="btn">Settings</a> -->
+								</li>
+							</ul>
+					</div>
+				</div>
+            
+             @RenderBody()
+				<footer id="footer" class="midnight-blue">
+				
+					<div class="ftrow">
+						 <ul>
+								<div class="rightreserv">
+									&copy; 2011-2016 <a target="_blank" href="#" title="Free Twitter Bootstrap WordPress Themes and HTML templates">InfoZTech.com</a>. All Rights Reserved.
+								</div>
+						</ul>
+						 
+					</div>
+			   
+			</footer>
+			</div>
+
+</div>
+    </div>
+</body>
+</html>

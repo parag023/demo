@@ -1,0 +1,146 @@
+﻿@using ApplicationDTO;
+@using System.Web.Mvc;
+@model AddProduct
+@{
+    ViewBag.Title = "AddProduct";
+    Layout = "~/Views/Shared/_MstLayoutPage.cshtml";
+}
+
+
+<link href="@Url.Content("~/Content/css/theme-elements.css")" rel="stylesheet" type="text/css"/>
+
+<script type="text/javascript">
+function changetextbox()
+{
+    if (document.getElementById("SubscriptionType").value == "5") {
+
+        document.getElementById("GeneralPrice").disabled = false;
+    }
+    else
+    {
+        document.getElementById("GeneralPrice").disabled = true;
+    }
+    if (document.getElementById("CallStatus").value != "1") {
+        document.getElementById("AssignTo").disabled = true;
+    }
+    else {
+        document.getElementById("AssignTo").disabled = false;
+    }
+}
+</script>
+<h2>AddProduct</h2>
+
+
+@using (Html.BeginForm("AddProduct", "MstTemplet", FormMethod.Post))
+{
+    <div class="content2">
+        <div class="upper">
+            @* <h2>New Customer Reg Details<span class="up-s">
+                <input type="search" id="search" placeholder="Search..." /><a href=""><img src="~/Content/images/Search.png" /></a></span>
+
+            </h2>*@
+            <div class="inner-content2">
+                <div class="Border">
+                   
+                     <center><h3>@ViewBag.CutomerList[0].Username Comment</h3></center>
+                    @*<input class="inp-big" type="text" name="CustomerName" value=" @ViewBag.CutomerList[0].Username" size="17" disabled>*@
+                    <ul>
+                        <li>
+                            <h3>Customer Name</h3>
+                        <input class="inp-big" type="text" name="CustomerName" value=" @ViewBag.CutomerList[0].CustomerName" size="17" disabled></li>
+                        @Html.HiddenFor(@model => @model.ProductId)
+                        @Html.Hidden("CustomerID", @Request.QueryString["CustomerID"] as String)
+                        @Html.Hidden("AccountNo", @Request.QueryString["AccountNo"] as String)
+                        <li>
+                            <h3>E-Mail</h3>
+                            <input class="inp-big" type="text" name="EmailId" value="@ViewBag.CutomerList[0].EmailId" size="17" disabled>
+                        </li>
+
+                        <li>
+                            <h3>Contact No</h3>
+                            <input type="text" name="ContactNo" value="@ViewBag.CutomerList[0].ContanctNo" size="17" style="font-size: 13pt; height: 30px; width: 179px;" disabled>
+                        </li>
+
+                        <li>
+                            <h3>State</h3>
+
+                            <input type="text" name="State" value="@ViewBag.CutomerList[0].State" size="17" style="font-size: 13pt; height: 30px; width: 179px;" disabled>
+                        </li>
+                        <li>
+                            <h3>Account Number</h3>
+                            <input class="acno" type="text" name="Accno" value="@ViewBag.CutomerList[0].AccountNo" size="17" disabled>
+                        </li>
+                    </ul>
+                </div>
+                <div class="space"></div>
+                <div class="Border">
+
+                    <ul>
+                        <li>
+                            <h3>Product</h3>
+                            @Html.DropDownList("Product", new SelectList(ViewBag.Product, "value", "text","--Select--"), new { @class = "s-hov" })
+                        </li>
+                        <li>
+                            <h3>Call Type </h3>
+                            @Html.DropDownList("CallType", new SelectList(ViewBag.CallType, "value", "text","--Select--"), new { @class = "s-hov" })
+                        </li>
+                        <li>
+                            <h3>Sub CallType </h3>
+                            @Html.DropDownList("SubCallType", new SelectList(ViewBag.SubCallType, "value", "text","--Select--"), new { @class = "s-hov" })
+                        </li>
+                        <li>
+                            <h3>No Of System</h3>
+                            <input class="nos" type="text" name="NoOfSystem" value="@Model.NoOfSystem" size="17" required autocomplete="off"/>
+                        </li>
+                        <li>
+                            <h3>Subscription Type</h3>
+                            @Html.DropDownList("SubscriptionType", new SelectList(ViewBag.SubcriptionType, "value", "text","--Select--"), new { @class = "s-hov", id = "SubscriptionType" ,@onchange="changetextbox (this.value);"})
+                        </li>
+                         <li>
+                            <h3>General Price</h3>
+                            <input class="nos" type="text" id="GeneralPrice" name="GeneralPrice" value="" size="17" required disabled autocomplete="off"/>
+                        </li>
+                        <li>
+                            <h3>Payment Mode</h3>
+                            @Html.DropDownList("Payment", new SelectList(ViewBag.Payment, "value", "text"), new { @class = "s-hov" })
+                        </li>
+                        <li>
+                            <h3>Call Status</h3>
+                            @Html.DropDownList("CallStatus", new SelectList(ViewBag.CallStatus, "value", "text","--Select--"), new { @class = "s-hov" ,id="CallStatus",@onchange="changetextbox (this.value);"})
+                        </li>
+                        <li>
+                            <h3>Assign TO</h3>
+                            @Html.DropDownList("AssignTo", new SelectList(ViewBag.AssignTo, "value", "text","--Select--"), new { @class = "s-hov", id="AssignTo" })
+                        </li>
+                        <li>
+                            <h3>Remark</h3>
+                            @*<input type="text" name="Remark" value="@Model.Remark" style="font-size: 13pt; width: 811px; height:100px;" required />*@
+                            @*<textarea name="Remark" value="@Model.Remark" cols="40" rows="5" style="width: 811px;"resize:none; required ></textarea>*@
+                            @Html.TextArea("Remark",@Model.Remark, new {cols="40", rows="5", style="width: 811px;" })
+                        </li>
+                    </ul>
+                </div>
+
+                <ul class="submit-bt">
+                    @*<a href="#" class="btn">Submit</a>*@
+                    @if (@Model.ProductId > 0)
+                    {
+                        <input type="submit" id="btnUpdateProduct" name="Command" value="UpdateProduct" class="button" />  
+                    }
+                    else
+                    {
+
+                        <input type="submit" id="btnAddProduct" name="Command" value="AddProduct" class="button" />   
+                    }
+
+
+                </ul>
+            </div>
+        </div>
+    </div>
+}
+
+
+@*<form method="post" action="CustomerRegistration">*@
+
+

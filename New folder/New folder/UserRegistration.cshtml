@@ -1,0 +1,57 @@
+﻿@using ApplicationDTO;
+@using System.Web.Mvc;
+@model UsersDTO
+
+@{
+    ViewBag.Title = "UserRegistration";
+    Layout = "~/Views/Shared/_MstLayoutPage.cshtml";
+}
+
+<form method="post" action="UserRegistration">
+    <div class="content2">
+        <div class="upper">
+            <h2>New User Registration<span class="up-s">
+                <input type="search" id="search" placeholder="Search..." /><a href=""><img src="~/Content/images/Search.png" /></a></span>
+
+            </h2>
+            <div class="inner-content2">
+                <ul>
+                    <li>
+                        <input type="text" name="Name" onclick="this.value = '';" onfocus="this.select()" onblur="this.value=!this.value?'Name':this.value;" value="@Model.name" size="17" style="font-size:13pt; height:30px; width:150px;" ></li>
+                    <li>
+                        <input type="text" name="Username" onclick="this.value = '';" onfocus="this.select()" onblur="this.value=!this.value?'Username':this.value;" value="@Model.username" size="17" style="font-size: 13pt; height: 30px; width: 150px;"></li>
+                    <li>
+                        <input type="text" name="Password" onclick="this.value = '';" onfocus="this.select()" onblur="this.value=!this.value?'Password':this.value;" value="@Model.password" size="17" style="font-size: 13pt; height: 30px; width: 150px;"></li>
+                  
+                    <li>
+                        <select class="s-hov" name="UserRole" style="font-size: 13pt; height: 30px; width: 150px;">
+                            <option style="display: none" disabled selected value="">UserRole</option>
+                            <option value="admin">admin</option>
+                            <option value="Sales">Sales</option>
+                            <option value="customerService">Customer Service</option>
+                            <option value="Followup">Followup</option>
+                        </select>
+                    </li>
+                     <li>
+                        <select class="s-hov" name="Status" style="font-size: 13pt; height: 30px; width: 150px;">
+                            <option style="display: none" disabled selected value="">Status</option>
+                            <option value="1">Active</option>
+                            <option value="0">De-Active</option>
+                           
+                        </select>
+                    </li>
+                </ul>
+
+                <ul class="submit-bt">
+                    @*<a href="#" class="btn">Submit</a>*@
+                    <input type="submit" value="Add New User" class="btn" />
+                </ul>
+            </div>
+
+
+        </div>
+        <div class="">
+        </div>
+    </div>
+</form>
+

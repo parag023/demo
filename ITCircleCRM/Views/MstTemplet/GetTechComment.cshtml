@@ -1,0 +1,84 @@
+﻿@model List<ApplicationDTO.TechCommentDTO>
+@{
+    ViewBag.Title = "GetTechComment";
+    Layout = "~/Views/Shared/_MstLayoutPage.cshtml";
+}
+<script>
+    $(document).ready(function () {
+        $("#lnk").click(function (evt) {
+            evt.preventDefault();
+            var fakedUri = $("#lnk").prop("href");
+            var uri = fakedUri.replace("xxxx", $("#search").val());
+            window.location.href = uri;
+
+        });
+    });
+
+</script>
+<div class="content2">
+    <div class="upper">
+        <h2>Ticket Details<span class="up-s">
+            <input type="search" id="search" placeholder="Search..." /><a href="@Url.Action("GetTechComment", "MstTemplet", new { SearchValue = "xxxx" })" id="lnk"><img src="~/Content/images/Search.png" /></a></span>
+        </h2>
+        <table>
+
+            <tr>
+                <th>AccountNo</th>
+                <th>CustomerName</th>
+                 @if (Session["UserRole"] != null && Convert.ToString(Session["UserRole"]) != "5")
+                 {
+                <th>ContanctNo</th>
+                 }
+                <th>TicketNo</th>
+                <th>CampaintDate</th>
+                <th>Disposition</th>
+                @if (Session["UserRole"] != null && Convert.ToString(Session["UserRole"]) == "1")
+                {
+                    <th>Action</th>}
+                @if (Session["UserRole"] != null && Convert.ToString(Session["UserRole"]) == "5")
+                {
+                    <th>Action</th>}
+                  @if (Session["UserRole"] != null && Convert.ToString(Session["UserRole"]) == "4")
+                {
+                    <th>Action</th>}
+            </tr>
+            <tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        @if (Session["UserRole"] != null && Convert.ToString(Session["UserRole"]) != "2")
+                        {
+                            @*<td>@Html.ActionLink(, "NewTicket", "MstTemplet", new { ProductId = item.ProductId.ToString(), CustomerId = item.CustomerId.ToString() }, new { })</td>*@
+                        }
+                        else
+                        {
+                         
+                        }
+                        <td>@item.AccountNo</td>
+                        <td>@item.CustomerName</td>
+                         @if (Session["UserRole"] != null && Convert.ToString(Session["UserRole"]) != "5")
+                         {
+                        <td>@item.ContanctNo</td>
+                         }
+                        <td>@item.TicketNo</td>
+                        <td>@item.CampaintDate</td>
+                        <td>@item.TechDisposition</td>                                            
+                        <td>
+                            @if (Session["UserRole"] != null && Convert.ToString(Session["UserRole"]) == "1")
+                            {
+                                @Html.ActionLink("Edit", "AddProduct", "MstTemplet", new {  }, new { @class = "edit" })
+                                @Html.ActionLink("Delete", "DeleteProduct", "MstTemplet", new {  }, new { @class = "delete" })
+                            }
+                            @if (Session["UserRole"] != null && Convert.ToString(Session["UserRole"]) == "4")
+                            {
+                                @Html.ActionLink("ViewCommnet", "FollowupComment", "MstTemplet", new { TechId=item.TechId,ProductId = item.ProductId.ToString(), CustomerId = item.CustomerId.ToString(),TicketId=item.TicketId.ToString() }, new {  })
+                            }
+                        </td>
+                        @* @Html.ActionLink("Edit", "NewTicket", "MstTemplet", new { Id = item.Id.ToString() }, new { @class="edit"})*@
+
+                    </tr>
+                }
+        </table>
+    </div>
+</div>
+

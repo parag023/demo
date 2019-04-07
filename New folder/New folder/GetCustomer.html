@@ -1,0 +1,49 @@
+﻿@model List<ApplicationDTO.CustomerDTO>
+
+@{
+    ViewBag.Title = "GetCustomer";
+    Layout = "~/Views/Shared/_MstLayoutPage.cshtml";
+}
+
+<html>
+<head>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+	
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+
+</head>
+
+    <body>
+<span class="up-s">
+                @*<a href="#" class="btn">Add Customer</a>*@</span>
+<table>
+    <thead>
+        <tr>
+            <th>Customer Name</th>
+            <th>Contact Number</th>
+            <th>State</th>
+            <th>City</th>
+            <th>CallType</th>
+            <th>SubCallType</th>
+			<th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.CustomerName</td>
+                <td>@item.ContactNo</td>
+                <td>@item.State</td>
+                <td>@item.City</td>
+                <td>@item.CallType</td>
+                <td>@item.SubCallType</td>
+                <td>@Html.ActionLink("Edit", "CustomerRegistration", "MstTemplet", new { CustomerId = item.CustomerId.ToString() }, null)</td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+</html>

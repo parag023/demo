@@ -1,0 +1,53 @@
+﻿@model List<ApplicationDTO.UsersDTO>
+@{
+    ViewBag.Title = "getUsers";
+    Layout = "~/Views/Shared/_MstLayoutPage.cshtml";
+}
+<script>
+    $(document).ready(function () {
+        $("#lnk").click(function (evt) {
+            evt.preventDefault();
+            var fakedUri = $("#lnk").prop("href");
+            var uri = fakedUri.replace("xxxx", $("#search").val());
+            window.location.href = uri;
+
+        });
+    });
+
+</script>
+<div class="content2">
+    <div class="upper">
+<h2>Manage Users<span class="up-s">
+         <input type="search" id="search" placeholder="Search..." /><a href="@Url.Action("getUsers", "MstTemplet", new { SearchValue = "xxxx" })" id="lnk"><img src="~/Content/images/Search.png" /></a></span>
+ </h2>
+<div>
+<table>
+    <thead>
+        <tr>
+            <th>name</th>
+            <th>Username</th>
+            <th>password</th>
+            <th>Userrole</th>
+            <th>Action</th>
+            
+        </tr>
+        </thead>
+    <tbody>
+  <tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.name</td>
+                <td>@item.username</td>
+                <td>@item.password</td>
+                <td>@item.UserRole</td>
+                <td>@Html.ActionLink("Edit", "UserRegistration", "MstTemplet", new {userid = item.userid.ToString() },new { @class="edit"})
+                @Html.ActionLink("Delete", "DeleteUser", "MstTemplet", new {userid = item.userid.ToString() },new{ @class="delete"})</td>
+                
+            </tr>
+        }
+        </tbody>
+</table>
+    </div>
+        </div>
+    </div>

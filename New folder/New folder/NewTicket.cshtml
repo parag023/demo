@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "NewTicket";
+    Layout = "~/Views/Shared/_MstLayoutPage.cshtml";
+}
+<form method="post" action="Newticket">
+    <div class="content2">
+        <div class="upper">
+            <h2>New Ticket<span class="up-s">
+                <input type="search" id="search" placeholder="Search..." /><a href=""><img src="~/Content/images/Search.png" /></a></span>
+
+            </h2>
+            <div class="inner-content2">
+                <ul>
+                    <li>
+                        <input type="text" name="ProblemReported" onclick="this.value = '';" onfocus="this.select()" onblur="this.value=!this.value?'Problem Reported':this.value;" value="ProblemReported" size="17" style="font-size:13pt; height:30px; width:150px;" ></li>
+                    <li>
+                        <input type="text" name="CamplaintDate" onclick="this.value = '';" onfocus="this.select()" onblur="this.value=!this.value?'CamplaintDate':this.value;" value="CamplaintDate" size="17" style="font-size: 13pt; height: 30px; width: 150px;"></li>
+                    <li>
+                        <input type="text" name="CaseReport" onclick="this.value = '';" onfocus="this.select()" onblur="this.value=!this.value?'CaseReport':this.value;" value="CaseReport" size="17" style="font-size: 13pt; height: 30px; width: 150px;"></li>
+                    <li>
+                        <input type="text" name="RefundReason" onclick="this.value = '';" onfocus="this.select()" onblur="this.value=!this.value?'Refund Reason':this.value;" value="RefundReason" size="17" style="font-size: 13pt; height: 30px; width: 150px;">
+                    </li>
+                    <li>
+                        <select class="s-hov" name="RefundType" style="font-size: 13pt; height: 30px; width: 150px;">
+                            <option style="display: none" disabled selected value>RefundType</option>
+                            <option value="volvo">Volvo</option>
+                            <option value="saab">Saab</option>
+                            <option value="mercedes">Mercedes</option>
+                            <option value="audi">Audi</option>
+                        </select>
+                    </li>
+                </ul>
+                 <ul>
+                    <li>
+                        <textarea onclick="this.value='';" onfocus="this.select()" onblur="this.value=!this.value?'Remark:':this.value;" rows="4" name="Solution" style="font-size: 13pt; width: 811px;">Solution:</textarea>
+                    </li>
+                </ul>
+                <ul class="submit-bt">
+                    @*<a href="#" class="btn">Submit</a>*@
+                    <input type="submit" value="AddTicket" class="btn" />
+                </ul>
+            </div>
+
+
+        </div>
+        <div class="">
+        </div>
+    </div>
+</form>
+
+
+
+

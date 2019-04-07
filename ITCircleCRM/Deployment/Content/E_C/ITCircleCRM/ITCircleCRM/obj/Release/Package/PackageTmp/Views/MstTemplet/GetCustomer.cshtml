@@ -1,0 +1,68 @@
+﻿@model List<ApplicationDTO.CustomerDTO>
+
+@{
+    ViewBag.Title = "GetCustomer";
+    Layout = "~/Views/Shared/_MstLayoutPage.cshtml";
+}
+
+
+<script>
+    $(document).ready(function () {
+        $("#lnk").click(function (evt) {
+            evt.preventDefault();
+            var fakedUri = $("#lnk").prop("href");
+            var uri = fakedUri.replace("xxxx", $("#search").val());
+            window.location.href = uri;
+
+        });
+    });
+
+</script>
+<div class="content2">
+    <div class="upper">
+        <h2>Customer Details<span class="up-s">
+            <input type="search" id="search" placeholder="Search..." /><a href="@Url.Action("GetCustomer", "MstTemplet", new { SearchValue = "xxxx" })" id="lnk"><img src="~/Content/images/Search.png" /></a></span>
+        </h2>
+        <table>
+
+            <tr>
+                <th>AccountNo</th>
+                <th>Customer Name</th>
+                <th>Contact Number</th>
+                <th>EmailId</th>
+                <th>State</th>
+                <th>City</th>
+                <th>Action</th>
+            </tr>
+            <tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.AccountNo</td>
+                        <td>@item.CustomerName</td>
+                        <td>@item.ContanctNo</td>
+                        <td>@item.EmailId</td>
+                        <td>@item.State</td>
+                        <td>@item.City</td>
+                        <td>
+                            @if (Session["UserRole"] != null && Convert.ToString(Session["UserRole"]) == "1")
+                            {
+                            @Html.ActionLink("Edit", "CustomerRegistration", "MstTemplet", new { CustomerId = item.CustomerId.ToString() }, new { @class = "edit" })
+                            @Html.ActionLink("Delete", "DeleteCustomer", "MstTemplet", new { CustomerId = item.CustomerId.ToString() }, new { @class = "delete" })
+                            @Html.ActionLink("AddProduct", "AddProduct", "MstTemplet", new { CustomerId = item.CustomerId.ToString(), AccountNo = item.AccountNo.ToString() }, new { @class = "add" })
+                            }
+                            @if (Session["UserRole"] != null && Convert.ToString(Session["UserRole"]) == "2")
+                            {
+                            @Html.ActionLink("AddProduct", "AddProduct", "MstTemplet", new { CustomerId = item.CustomerId.ToString(), AccountNo = item.AccountNo.ToString() }, new { @class = "add" })
+                            }
+                            @if (Session["UserRole"] != null && Convert.ToString(Session["UserRole"]) == "4")
+                            {                             
+                            @Html.ActionLink("AddProduct", "AddProduct", "MstTemplet", new { CustomerId = item.CustomerId.ToString(), AccountNo = item.AccountNo.ToString() }, new { @class = "add" })
+                            }
+                        </td>
+                        @* @Html.ActionLink("Edit", "NewTicket", "MstTemplet", new { Id = item.Id.ToString() }, new { @class="edit"})*@
+                    </tr>
+                }
+        </table>
+    </div>
+</div>

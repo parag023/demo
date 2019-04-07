@@ -1,0 +1,9 @@
+﻿<parameters>
+  <parameter name="IIS Web Application Name" defaultValue="Default Web Site/ITCircleCRM" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^E:\\ITCircleCRM\\ITCircleCRM\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^E:\\ITCircleCRM\\ITCircleCRM\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="DBConString-Web.config Connection String" defaultValue="Data Source=DESKTOP-G75J2DI;Initial Catalog=CRMDev;User ID=sa;Password=sql@2008">
+    <parameterEntry kind="XmlFile" scope="E:\\ITCircleCRM\\ITCircleCRM\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DBConString']/@connectionString" />
+  </parameter>
+</parameters>

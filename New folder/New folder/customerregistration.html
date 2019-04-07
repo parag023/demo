@@ -1,0 +1,140 @@
+@using ApplicationDTO;
+@using System.Web.Mvc;
+@model CustomerDTO
+
+@{
+    ViewBag.Title = "CustomerRegistration";
+    Layout = "~/Views/Shared/_MstLayoutPage.cshtml";
+}
+<html>
+<head>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+
+</head>
+
+    <body>
+<form method="post" action="CustomerRegistration">
+    
+    <div class="content2">
+        <div class="upper">
+            <h2>New Customer Reg Details<span class="up-s">
+                <input type="search" id="search" placeholder="Search..." /><a href=""><img src="~/Content/images/Search.png" /></a></span>
+
+            </h2>
+            <div class="inner-content2">
+                <ul>
+                    
+                    <li>
+					<h3>Customer Name</h3>
+					<input type="text" name="CustomerName" onclick="this.value = '';" onfocus="this.select()" onblur="this.value=!this.value?'Customer Name':this.value;" value="" size="17" style="font-size:13pt; height:30px; width:150px;" ></li>
+					
+                     <li>
+					 <h3>Contact No</h3>
+                        <input type="text" name="ContactNo" onclick="this.value = '';" onfocus="this.select()" onblur="this.value=!this.value?'Contact Number':this.value;" value="" size="17" style="font-size: 13pt; height: 30px; width: 150px;"></li>
+                   
+                    <li>
+					<h3>E-Mail</h3>
+                        <input type="text" name="EmailId" onclick="this.value = '';" onfocus="this.select()" onblur="this.value=!this.value?'Email':this.value;" value="" size="17" style="font-size: 13pt; height: 30px; width: 150px;"></li>
+                    
+                   
+                    <li>
+					<h3>State</h3>
+                        <select class="s-hov" name="State" style="font-size: 13pt; height: 30px; width: 150px;">
+                            <option style="display: none" disabled selected value>State</option>
+                            <option value="volvo">Volvo</option>
+                            <option value="saab">Saab</option>
+                            <option value="mercedes">Mercedes</option>
+                            <option value="audi">Audi</option>
+                        </select>
+                    </li>
+                    
+                    <li><h3>City</h3>
+                        <select class="s-hov" name="City" style="font-size: 13pt; height: 30px; width: 150px;">
+                            <option style="display: none" disabled selected value>City</option>
+                            <option value="volvo">Volvo</option>
+                            <option value="saab">Saab</option>
+                            <option value="mercedes">Mercedes</option>
+                            <option value="audi">Audi</option>
+                        </select>
+                    </li>
+                </ul>
+                <ul>
+                   
+                    <li><h3>Call Type</h3>
+                        <select class="s-hov" name="CallType" style="font-size: 13pt; height: 30px; width: 150px;">
+                            <option style="display: none" disabled selected value>Call Type</option>
+                            <option value="volvo">Volvo</option>
+                            <option value="saab">Saab</option>
+                            <option value="mercedes">Mercedes</option>
+                            <option value="audi">Audi</option>
+                        </select>
+                    </li>
+                   
+                    <li>
+					<h3>SubCall Type </h3>
+                        <select class="s-hov" name="SubCallType" style="font-size: 13pt; height: 30px; width: 150px;">
+                            <option style="display: none" disabled selected value>Sub Call Type</option>
+                            <option value="volvo">Volvo</option>
+                            <option value="saab">Saab</option>
+                            <option value="mercedes">Mercedes</option>
+                            <option value="audi">Audi</option>
+                        </select>
+                    </li>
+                   
+                    <li>
+					<h3>No Of System</h3>
+                        <input type="text" name="NoOfSystem" onclick="this.value = '';" onfocus="this.select()" onblur="this.value=!this.value?'Number Of System':this.value;" value="" size="17" style="font-size: 13pt; height: 30px; width: 150px;"></li>
+                    <li>
+					<h3>Subscription Type</h3>
+                        <select id="Subscriptiontype" name="SubcriptionType" style="font-size: 13pt; height: 30px; width: 316px;">
+                            <option style="display: none" disabled selected value>Subscription Type</option>
+                            <option value="">Volvo</option>
+                            <option value="saab">Saab</option>
+                            <option value="mercedes">Mercedes</option>
+                            <option value="audi">Audi</option>
+                        </select></li>
+                </ul>
+                <ul>
+                   
+                    <li><h3>Payment Mode</h3>
+                        <select name="PaymentMode" style="font-size: 13pt; height: 30px; width: 150px;">
+                            <option style="display: none" disabled selected value>Payment Mode</option>
+                            <option value="volvo">Volvo</option>
+                            <option value="saab">Saab</option>
+                            <option value="mercedes">Mercedes</option>
+                            <option value="audi">Audi</option>
+                        </select></li>
+                   
+                    <li><h3>Call Status</h3>
+                        <select name="CallStatus" style="font-size: 13pt; height: 30px; width: 150px;">
+                            <option style="display: none" disabled selected value>Call Status</option>
+                            <option value="volvo">Volvo</option>
+                            <option value="saab">Saab</option>
+                            <option value="mercedes">Mercedes</option>
+                            <option value="audi">Audi</option>
+                        </select>
+                    </li>
+                </ul>
+                <ul>
+                    <li><h3>Remarks</h3>
+                        <textarea onclick="this.value='';" onfocus="this.select()" onblur="this.value=!this.value?'Remark:':this.value;" rows="4" name="Remark" style="font-size: 13pt; width: 811px;">Remark:</textarea>
+                    </li>
+                </ul>
+                <ul class="submit-bt">
+                    @*<a href="#" class="btn">Submit</a>*@
+                    <!-- <input type="submit"   value="Add Cutomer" class="btn" /> -->
+					@*<a href="#" class="btn">Add Customer</a>*@
+                </ul>
+            </div>
+
+
+        </div>
+        <div class="">
+        </div>
+    </div>
+</form>
+    </body>
+    </html>

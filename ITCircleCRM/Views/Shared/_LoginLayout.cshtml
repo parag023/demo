@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet"  href="@Url.Content("~/Content/css/login.css")">
+    <link href="@Url.Content("~/Content/css/jquery-ui.css")" rel="stylesheet" />
+</head>
+<body>
+    <div>
+        <div class="container">
+            <section id="content">
+                <form action="Account/Login" method="post" >
+                    <h1>Login</h1>
+                    <div>
+                        <input type="text" placeholder="Username" required id="username" name="username" autocomplete="off"/>
+                    </div>
+                    <div>
+                        <input type="password" placeholder="Password" required id="password" name="password" autocomplete="off"/>
+                    </div>
+                    <div>
+                        <input type="submit" value="Log in" />
+                       @* <a href="#">Lost your password?</a>
+                        <a href="#">Register</a>*@
+                    </div>
+                </form>
+                <!-- form -->
+                <div class="button">
+                    <a href="#">IT CIRCLE</a>
+                </div>
+                <!-- button -->
+            </section>
+            <!-- content -->
+        </div>
+        <!-- container -->
+        @RenderBody()
+    </div>
+</body>
+</html>

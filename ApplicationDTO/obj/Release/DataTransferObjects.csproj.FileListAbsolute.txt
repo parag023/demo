@@ -1,0 +1,4 @@
+E:\ITCircleCRM\ApplicationDTO\bin\Release\ApplicationDTO.dll
+E:\ITCircleCRM\ApplicationDTO\bin\Release\ApplicationDTO.pdb
+E:\ITCircleCRM\ApplicationDTO\obj\Release\ApplicationDTO.dll
+E:\ITCircleCRM\ApplicationDTO\obj\Release\ApplicationDTO.pdb

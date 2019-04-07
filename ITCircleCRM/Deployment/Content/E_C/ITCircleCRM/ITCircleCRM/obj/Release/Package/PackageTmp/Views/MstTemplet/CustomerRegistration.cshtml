@@ -1,0 +1,86 @@
+﻿@using ApplicationDTO;
+@using System.Web.Mvc;
+@model CustomerDTO
+
+@{
+    ViewBag.Title = "CustomerRegistration";
+    Layout = "~/Views/Shared/_MstLayoutPage.cshtml";
+}
+
+<script>
+    var Displaymsg = "@TempData["DisplayMessage"]";
+    $(document).ready(function () {
+        if (Displaymsg != "") {
+            alert(Displaymsg);
+        }
+
+
+    });
+</script>
+
+
+@using (Html.BeginForm("CustomerRegistration", "MstTemplet", FormMethod.Post))
+{
+   
+    
+@*<form method="post" action="CustomerRegistration">*@
+    <div class="content2">
+        <div class="upper">
+            @* <h2>New Customer Reg Details<span class="up-s">
+                <input type="search" id="search" placeholder="Search..." /><a href=""><img src="~/Content/images/Search.png" /></a></span>
+
+            </h2>*@
+            <div class="inner-content2">
+                <ul>
+                    <li>
+                        <h3>Customer Name</h3>
+                        <input class="inp-big" type="text" name="CustomerName" value="@Model.CustomerName" size="17" autocomplete="off" required></li>
+                    @Html.HiddenFor(@model => @model.CustomerId)
+                    <li>
+                        <h3>E-Mail</h3>
+                        <input class="inp-big" type="text" name="EmailId" value="@Model.EmailId" size="17" autocomplete="off" required>
+                    </li>
+
+                    <li>
+                        <h3>Contact No</h3>
+                        <input type="text" name="ContactNo" value="@Model.ContanctNo" size="17" style="font-size: 13pt; height: 30px; width: 179px;" autocomplete="off" required>
+                    </li>
+                    <li>
+                        <h3>State</h3>
+                        @Html.DropDownList("State", new SelectList(ViewBag.State, "value", "text"), new { @class = "s-hov" })
+                    </li>
+                   @* <li>
+                        <h3>City</h3>
+                        @Html.DropDownList("City", new SelectList(ViewBag.City, "value", "text"), new { @class = "s-hov" })
+                    </li>*@
+                    <li>
+                        <h3>Account Number</h3>
+                        <input class="acno" type="text" name="Accno" value="@Model.AccountNo" size="17" autocomplete="off" required>
+                    </li>
+                </ul>
+
+                <ul>
+                </ul>
+                <ul class="submit-bt">
+                    @*<a href="#" class="btn">Submit</a>*@
+                    @if (@Model.CustomerId > 0)
+                    {
+                        <input type="submit" id="btnUpdateCustomer" name="Command" value="UpdateCustomer" class="button" />  
+                    }
+                    else
+                    {
+
+                        <input type="submit" id="btnAddCustomer" name="Command" value="AddCustomer" class="button" />   
+                    }
+
+
+                </ul>
+            </div>
+
+
+        </div>
+        <div class="">
+        </div>
+    </div>
+@*</form>*@
+}

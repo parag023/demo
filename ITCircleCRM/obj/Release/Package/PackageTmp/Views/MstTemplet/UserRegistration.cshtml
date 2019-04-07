@@ -1,0 +1,80 @@
+﻿@using System.Web.Mvc;
+@using ApplicationDTO
+@model UsersDTO
+
+
+@{
+    ViewBag.Title = "UserRegistration";
+    Layout = "~/Views/Shared/_MstLayoutPage.cshtml";
+}
+
+
+@using (Html.BeginForm("UserRegistration", "MstTemplet", FormMethod.Post))
+{
+   
+@*<form method="post" action="UserRegistration">*@
+    <div class="content2">
+        <div class="upper">
+            @* <h2>New User<span class="up-s">
+                <input type="search" id="search" placeholder="Search..." /><a href=""><img src="~/Content/images/Search.png" /></a></span>
+
+            </h2>*@
+            <div class="inner-content2">
+                <ul>
+                    @Html.HiddenFor(@model => @model.userid)
+                    <li>
+                        <h3>Name</h3>
+                        <input class="inp-big" type="text" name="Name" value="@Model.name" size="17"  autocomplete="off"></li>
+                    <input type="hidden" name="hidUserId" value="0">
+                    <li>
+                        <h3>UserName</h3>
+                        <input class="inp-big" type="text" name="Username" value="@Model.username" size="17" autocomplete="off"></li>
+                    <li>
+                        <h3>Password</h3>
+                        <input type="text" name="Password" value="@Model.password" size="17" style="font-size: 13pt; height: 30px; width: 150px;" autocomplete="off"></li>
+
+                    <li>
+                        <h3>UserRole</h3>
+                        @*  <select class="s-hov" name="UserRole" style="font-size: 13pt; height: 30px; width: 150px;">
+                            <option style="display: none" disabled selected value>--Select--</option>
+                            <option value="1">admin</option>
+                            <option value="2">Sales</option>
+                            <option value="3">Customer Service</option>
+                            <option value="4">Followup</option>
+                            <option value="5">TechnicalSupport</option>
+                        </select>*@
+                        @Html.DropDownList("UserRole", new SelectList(ViewBag.Roles, "value", "text"),"--Select UserRole--", new { @class="s-hov"})
+
+                    </li>
+                    <li>
+                        <h3>Status</h3>
+                        <select class="s-hov" name="Status">
+                            <option style="display: none" disabled selected>--Select-</option>
+                            <option value="true">Active</option>
+                            <option value="false">De-Active</option>
+
+                        </select>
+                    </li>
+                </ul>
+                <ul class="submit-bt">
+                    @*<a href="#" class="btn">Submit</a>*@
+                    @if (@Model.userid > 0)
+                  { 
+                        <input type="submit" id="btnUpdateUser" name="Command" value="UpdateUser" class="button" />
+                  }
+                  else
+                  {
+                        <input type="submit" id="btbInsertUser" name="Command" value="AddNewUser" class="button" />  
+                    
+                  }
+                </ul>
+            </div>
+
+
+        </div>
+        <div class="">
+        </div>
+    </div>
+@*</form>*@
+
+}

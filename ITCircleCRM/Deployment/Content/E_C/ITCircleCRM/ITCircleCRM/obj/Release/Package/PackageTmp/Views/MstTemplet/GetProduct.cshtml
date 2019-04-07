@@ -1,0 +1,80 @@
+﻿@model List<ApplicationDTO.AddProduct>
+@{
+    ViewBag.Title = "GetProduct";
+    Layout = "~/Views/Shared/_MstLayoutPage.cshtml";
+}
+<script>
+    $(document).ready(function () {
+        $("#lnk").click(function (evt) {
+            evt.preventDefault();
+            var fakedUri = $("#lnk").prop("href");
+            var uri = fakedUri.replace("xxxx", $("#search").val());
+            window.location.href = uri;
+
+        });
+    });
+
+</script>
+<div class="content2">
+    <div class="upper">
+        <h2>Product Details<span class="up-s">
+            <input type="search" id="search" placeholder="Search..." /><a href="@Url.Action("GetProduct", "MstTemplet", new { SearchValue = "xxxx" })" id="lnk"><img src="~/Content/images/Search.png" /></a></span>
+        </h2>
+        <table>
+
+            <tr>
+                <th>AccountNo</th>
+                <th>WON</th>
+                <th>Product</th>
+                <th>SCT</th>
+                <th>NOS</th>
+                <th>SubcriptionType</th>
+                <th>CallStatus</th>
+                <th>AssignTo</th>
+                <th>SalesDate</th>
+                @if (Session["UserRole"] != null && Convert.ToString(Session["UserRole"]) == "1")
+                {
+                    <th>Action</th>}
+               
+            </tr>
+            <tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        @if (Session["UserRole"] != null && Convert.ToString(Session["UserRole"]) != "2")
+                        {
+                            <td>@Html.ActionLink(item.AccountNo, "NewTicket", "MstTemplet", new { ProductId = item.ProductId.ToString(), CustomerId = item.CustomerId.ToString() }, new { })</td>
+                        }
+                        else
+                        {
+                            <td>@item.AccountNo</td>
+                        }
+                        <td>@item.WorkOrderNumber</td>
+                        <td>@item.Product</td>
+                        <td>@item.SubCallType</td>
+                        <td>@item.NoOfSystem</td>
+                        <td>@item.SubcriptionType</td>
+                        <td>@item.CallStatus</td>
+                        <td>@item.AssignTo</td>
+                        <td>@item.salesDate</td>
+
+                        <td>
+                            @if (Session["UserRole"] != null && Convert.ToString(Session["UserRole"]) == "1")
+                            {
+                                @Html.ActionLink("Edit", "AddProduct", "MstTemplet", new { ProductId = item.ProductId.ToString(), CustomerId = item.CustomerId.ToString() }, new { @class = "edit" })
+                                @Html.ActionLink("Delete", "DeleteProduct", "MstTemplet", new { ProductId = item.ProductId.ToString() }, new { @class = "delete" })
+                            }
+                            @if (Session["UserRole"] != null && Convert.ToString(Session["UserRole"]) == "3")
+                            {
+                            }
+                        </td>
+                        @* @Html.ActionLink("Edit", "NewTicket", "MstTemplet", new { Id = item.Id.ToString() }, new { @class="edit"})*@
+
+                    </tr>
+                }
+        </table>
+    </div>
+</div>
+
+
+

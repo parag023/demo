@@ -1,0 +1,249 @@
+﻿<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/Content/css/style.css")" rel="stylesheet" type="text/css"/>
+    <link href="@Url.Content("~/Content/css/jquery-ui-1.8.24/themes/base/jquery.ui.all.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/jquery-1.7.1.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery-ui-1.8.20.min.js")"></script>
+</head>
+
+<body>
+    <div class="outer">
+        <div class="outerin">
+            <header class="head">
+                <div class="navi-main">
+                    <div class="follow-box">
+                        <div class="head-left">
+                            
+                        </div>
+                        <div class="head-logo">
+                            <h1 class="nav-brand">
+                                <a href="@Url.Action("Index", "MstTemplet")">
+                                    <img src="~/Content/images/Logo.png">
+                                </a>
+                            </h1>
+                        </div>
+                        <div class="head-right">
+                            <label>Welcome @Session["Username"] </label>
+                            @*<a href="#"><img src="~/Content/images/logoutimg.png" height="45px" width="45px" title="LogOut"></a><br>*@
+                            @Html.ActionLink("Logout", "LogOut", "MstTemplet", null, new { @class = "Logout" })
+
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <div class="container1">
+            </div>
+            <div class="container2">
+                <div class="content1">
+                    <div class="content1-inner">
+                        <ul>
+                            @if (Session["UserRole"] != null && Convert.ToString(Session["UserRole"]) == "1")
+                            {
+                                <li>
+                                    <a href="@Url.Action("UserRegistration", "MstTemplet")" class="btn">New User</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("getUsers", "MstTemplet")" class="btn">Manage User</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("CustomerRegistration", "MstTemplet")" class="btn">New Customer</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("GetCustomer", "MstTemplet")" class="btn">Manage Customer</a>
+                                </li>
+                                @*
+                                <li>
+                                    <a href="@Url.Action("AddProduct", "MstTemplet")" class="btn">Add Product</a>
+                                </li>*@
+                                
+                                <li>
+                                    <a href="@Url.Action("GetProduct", "MstTemplet")" class="btn">Manage Product</a>
+                                </li>
+                                
+                                @*<li>
+                                    <a href="@Url.Action("NewTicket", "MstTemplet")" class="btn">New Ticket</a>
+                                </li>*@
+                                <li>
+                                    <a href="@Url.Action("GetTicket", "MstTemplet")" class="btn">Manage Ticket</a>
+                                </li>   
+                                 <li>
+                                    <a href="@Url.Action("GetTicketHistory", "MstTemplet")" class="btn">View TicketHistory</a>
+                                </li>                             
+                                <li>
+                                    @*<a href="#" class="btn">Manage</a>						*@
+                                </li>
+                                <li>
+                                    @*<a href="#" class="btn">Chat</a>*@
+                                </li>
+                                <li>
+                                    @*<a href="#" class="btn">Reports</a>*@
+                                </li>
+                                <li>
+                                    @*<a href="#" class="btn">Settings</a>*@
+                                </li>
+                            }
+
+                            @if (Session["UserRole"] != null && Convert.ToString(Session["UserRole"]) == "2")
+                            {
+                        
+@*<li>
+									<a href="@Url.Action("getUsers", "MstTemplet")" class="btn">Manage User</a>						
+								</li>*@
+                                <li>
+                                    <a href="@Url.Action("CustomerRegistration", "MstTemplet")" class="btn">New Customer</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("GetCustomer", "MstTemplet")" class="btn">Manage Customer</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("GetProduct", "MstTemplet")" class="btn">Manage Product</a>
+                                </li>
+                                @*
+                                <li>
+									<a href="@Url.Action("NewTicket", "MstTemplet")" class="btn">New Ticket</a>						
+								</li>*@
+                                <li>
+									<a href="@Url.Action("GetTicket", "MstTemplet")" class="btn">Manage Ticket</a>						
+								</li>
+                                <li>
+                                    @*<a href="#" class="btn">Manage</a>						*@
+                                </li>
+                                <li>
+                                    @*<a href="#" class="btn">Reports</a>*@
+                                </li>
+                                <li>
+                                    @*<a href="#" class="btn">Settings</a>*@
+                                </li>
+                            }
+                            @if (Session["UserRole"] != null && Convert.ToString(Session["UserRole"]) == "3")
+                            {
+@*<li>
+									<a href="@Url.Action("UserRegistration", "MstTemplet")" class="btn">New User</a>						
+								</li>
+                                <li>
+									<a href="@Url.Action("getUsers", "MstTemplet")" class="btn">Manage User</a>						
+								</li>*@
+                                <li>
+                                    <a href="@Url.Action("GetProduct", "MstTemplet")" class="btn">Manage Product</a>
+                                </li>
+                                @*<li>
+                                    <a href="@Url.Action("NewTicket", "MstTemplet")" class="btn">New Ticket</a>
+                                </li>*@
+                                <li>
+                                    <a href="@Url.Action("GetTicket", "MstTemplet")" class="btn">Manage Ticket</a>
+                                </li>
+                            
+                                <li>
+                                    @*<a href="#" class="btn">Manage</a>						*@
+                                </li>
+                                <li>
+                                    @*<a href="#" class="btn">Chat</a>*@
+                                </li>
+                                <li>
+                                    @*<a href="#" class="btn">Reports</a>*@
+                                </li>
+                                <li>
+                                    @*<a href="#" class="btn">Settings</a>*@
+                                </li>
+                    
+                            }
+                            @if (Session["UserRole"] != null && Convert.ToString(Session["UserRole"]) == "4")
+                            {
+                                @*<li>
+                                    <a href="@Url.Action("UserRegistration", "MstTemplet")" class="btn">New User</a>
+                                </li>*@
+
+                                <li>
+                                    <a href="@Url.Action("CustomerRegistration", "MstTemplet")" class="btn">New Customer</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("GetCustomer", "MstTemplet")" class="btn">Manage Customer</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("GetProduct", "MstTemplet")" class="btn">Manage Product</a>
+                                </li>                                
+                                 <li>
+                                    <a href="@Url.Action("GetTechComment", "MstTemplet")" class="btn">Manage Ticket</a>
+                                </li>
+                                <li>
+                                    @*<a href="#" class="btn">Manage</a>						*@
+                                </li>
+                                <li>
+                                    @*<a href="#" class="btn">Chat</a>*@
+                                </li>
+                                <li>
+                                    @*<a href="#" class="btn">Reports</a>*@
+                                </li>
+                                <li>
+                                    @*<a href="#" class="btn">Settings</a>*@
+                                </li>
+                    
+                            }
+
+                            @if (Session["UserRole"] != null && Convert.ToString(Session["UserRole"]) == "5")
+                            {
+@*<li>
+									<a href="@Url.Action("UserRegistration", "MstTemplet")" class="btn">New User</a>						
+								</li>
+                                <li>
+									<a href="@Url.Action("getUsers", "MstTemplet")" class="btn">Manage User</a>						
+								</li>
+                                <li>
+									<a href="@Url.Action("CustomerRegistration", "MstTemplet")" class="btn">New Customer</a>
+								</li>
+								<li>
+									<a href="@Url.Action("GetCustomer", "MstTemplet")" class="btn">Manage Customer</a>
+								</li>
+                                <li>
+									<a href="@Url.Action("NewTicket", "MstTemplet")" class="btn">New Ticket</a>						
+								</li>*@
+                                <li>
+                                    <a href="@Url.Action("GetTicket", "MstTemplet")" class="btn">Manage Ticket</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("GetTechComment", "MstTemplet")" class="btn">Manage TechComment</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="btn">Chat</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="btn">Settings</a>
+                                </li>
+                                <li>
+                                    @*<a href="#" class="btn">Manage</a>						*@
+                                </li>
+                                <li>
+                                    @*<a href="#" class="btn">Chat</a>*@
+                                </li>
+                                <li>
+                                    @*<a href="#" class="btn">Reports</a>*@
+                                </li>
+                                <li>
+                                    @*<a href="#" class="btn">Settings</a>*@
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+
+                @RenderBody()
+                <footer id="footer" class="midnight-blue">
+
+                    <div class="ftrow">
+                        <ul>
+                            <div class="rightreserv">
+                                &copy; 2011-2016 <a target="_blank" href="#" title="Free Twitter Bootstrap WordPress Themes and HTML templates">InfoZTech.com</a>. All Rights Reserved.
+                            </div>
+                        </ul>
+
+                    </div>
+
+                </footer>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

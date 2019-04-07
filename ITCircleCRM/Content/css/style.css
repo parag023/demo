@@ -1,0 +1,495 @@
+body
+{
+    font-family: "Century Schoolbook";
+    margin: 0;
+    padding: 0;
+}
+
+.outer
+{
+    width: 90%;
+    padding-left: 5%;
+    padding-right: 5%;
+    height: 100%;
+}
+
+
+.outerin
+{
+    box-shadow: 0 1px 5px 0 rgba(0,0,0,.4);
+}
+
+.navi-main
+{
+    background: transparent;
+    width: 100%;
+    padding: 10px 0 10px 0;
+    text-align: center;
+}
+
+.follow-box
+{
+    margin-right: auto;
+    margin-left: auto;
+}
+
+    .follow-box ul
+    {
+        margin: 0;
+        padding: 10px 0 10px 0;
+    }
+
+    .follow-box li
+    {
+        width: 20%;
+        list-style: none;
+        display: inline-block;
+    }
+
+    .follow-box div
+    {
+        display: inline-block;
+    }
+
+
+
+h1.nav-brand
+{
+    margin: 0;
+    padding: 0;
+    height: auto;
+    position: relative;
+    top: 0;
+    z-index: 10;
+}
+
+.follow-box .head-left
+{
+    width: 20%;
+    float: left;
+    padding-top: 40px;
+}
+
+.follow-box .head-logo
+{
+    width: 40%;
+    padding: 10px 0 10px;
+    padding-left: 10%;
+}
+
+.follow-box .head-right
+{
+    float: right;
+    padding-top: 50px;
+    font-size: 23px!important;
+    font-weight: bold;
+    display: block;
+    width: 30%;
+}
+
+.follow-box .head-left > a
+{
+    font-size: 20px;
+    text-align: center;
+    width: 150px;
+    text-decoration: none;
+    padding: 10px;
+}
+
+
+h1.nav-brand a
+{
+    color: white;
+    display: inline-block;
+}
+
+
+
+header
+{
+    position: relative;
+    margin: 0;
+    padding: 0;
+    z-index: 11;
+}
+
+
+.container1
+{
+    width: 100%;
+    height: 10px;
+    box-shadow: 0 1px 5px 0 rgba(0,0,0,.4);
+    background: #C0C0C0;
+}
+
+
+.container2
+{
+    float: left;
+    box-shadow: 0 1px 5px 0 rgba(0,0,0,.4);
+    width: 100%;
+}
+
+.content1
+{
+   border-right: 10px solid #C0C0C0;
+    width: 15%;
+    float: left;
+    height: 750px;
+    margin: 0;
+}
+
+.content1-inner
+{
+    display: flex;
+    display: -webkit-flex; /* Safari 8 */
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap; /* Safari 8 */
+    justify-content: center;
+    -webkit-justify-content: center; /* Safari 8 */
+    height: 100%;
+    width: 100%;
+    float: left;
+}
+
+.content1 ul
+{
+    float: left;
+    padding: 30px 0;
+    list-style: none;
+    margin: 0;
+}
+
+.content1 li
+{
+    list-style: none;
+    display: block;
+    margin: 0px;
+    cursor: pointer;
+    padding: 10px 0 10px 0;
+}
+
+.inner-content2 h3
+{
+    /* Safari 8 */
+    font-size: 17px !important;
+    padding: 0px 0px 5px 0px!important;
+    margin: 0px !important;
+}
+
+
+
+
+
+.content1 li > a
+{
+    
+    font-size: 16px;
+    text-align: center;
+    width: 120px;
+    text-decoration: none;
+    padding: 10px;
+}
+
+.content2
+{
+    overflow-x:hidden;
+    overflow-y:scroll;
+    float: right;
+    height: 101%;
+    width: 84%;
+   padding-top:10px;
+   
+}
+
+    .content2 .upper
+    {
+        float: left;
+        padding: 0 0 0 10px;
+        margin: 0;
+        font-size: 10px;
+        color: #333;
+        font-weight: bold;
+        height:100%;
+    }
+
+.upper .up-s
+{
+    width: 245px;
+    float: right;
+    
+}
+
+
+
+.upper input#search
+{
+    width: 200px;
+    height: 45px;
+    box-shadow: 0 1px 5px 0 rgba(0,0,0,.4);
+    
+    border: 1px solid #3cb0fd;
+    font-size: 15pt;
+    float: left;
+    
+    padding-left: 10px;
+    padding-right: 20px;
+}
+
+.inner-content2
+{
+    float: left;
+    height: 500px;
+}
+
+
+
+
+.content2 h2
+{
+    margin: 0;
+    font-size: 30px;
+    padding: 0 0 25px 0;
+}
+
+.content2 ul
+{
+    float: left;
+    padding: 10px 0;
+    list-style: none;
+    margin: 0;
+}
+
+.content2 li
+{
+    font-size: 10px!important;
+    list-style: none;
+    display: inline-block;
+    margin: 0px;
+    cursor: pointer;
+    padding: 10px 5px 10px 5px;
+}
+
+.content2 input, select, option, textarea
+{
+    color: #7e7e7e;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    border: 1px solid #C2C2C2;
+    box-shadow: 1px 1px 4px #EBEBEB;
+    -moz-box-shadow: 1px 1px 4px #EBEBEB;
+    -webkit-box-shadow: 1px 1px 4px #EBEBEB;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+}
+
+.content2 .submit-bt
+{
+    width: 100%;
+    display: flex;
+    display: -webkit-flex; /* Safari 8 */
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap; /* Safari 8 */
+    justify-content: center;
+    -webkit-justify-content: center; /* Safari 8 */
+}
+
+#footer
+{
+    height: 30px;
+    width: 100%;
+    float: left;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    color: #fff;
+    background: #2e2e2e;
+}
+
+    #footer .ftrow
+    {
+        width: 100%;
+    }
+
+    #footer a
+    {
+        color: #fff;
+        font-size: 20px;
+    }
+
+        #footer a:hover
+        {
+            color: #089de3;
+        }
+
+    #footer a
+    {
+        text-decoration: none;
+    }
+
+    #footer ul
+    {
+        width: 100%;
+        list-style: none;
+        margin: 0;
+    }
+
+.rightreserv
+{
+    float: left;
+}
+
+table
+{
+    border-collapse: collapse;
+    width: 980px;
+}
+
+th, td
+{
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even)
+{
+    background-color: #f2f2f2;
+}
+
+th
+{
+    background-color: #3498db;
+    color: white;
+}
+
+.edit
+{
+    background: url(../images/editblue.png)no-repeat;
+    width: 32px;
+    height: 22px;
+    display: inline-block;
+    text-indent: -9999px;
+}
+
+.delete
+{
+    background: url(../images/Delete.png) no-repeat;
+    width: 22px;
+    height: 22px;
+    display: inline-block;
+    text-indent: -9999px;
+}
+
+.Logout
+{
+    background: url(../images/logoutimg.png) no-repeat;
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    text-indent: -9999px;
+}
+
+
+.btn
+{
+    background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+    background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+    background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+    background-image: -o-linear-gradient(top, #3498db, #2980b9);
+    background-image: linear-gradient(to bottom, #3498db, #2980b9);
+    -webkit-border-radius: 4;
+    -moz-border-radius: 4;
+    border-radius: 4px;
+    -webkit-box-shadow: 3px 4px 8px #666666;
+    -moz-box-shadow: 3px 4px 8px #666666;
+    box-shadow: 3px 4px 8px #666666;
+    padding: 10px;
+    display: inline-block;
+    text-decoration: none;
+    border-radius: 3px;
+    background: #3498db;
+    color: #FFFFFF;
+    font-size: 15px;
+}
+
+    .btn:hover
+    {
+        background: #3cb0fd;
+        background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+        background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+        background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+        background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+        background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+        text-decoration: none;
+    }
+
+.button
+{
+    -webkit-border-radius: 4 !important;
+    -moz-border-radius: 4 !important;
+    border-radius: 4px!important;
+    -webkit-box-shadow: 3px 4px 8px #666666!important;
+    -moz-box-shadow: 3px 4px 8px #666666!important;
+    box-shadow: 3px 4px 8px #666666!important;
+    border: !important;
+    padding: 10px!important;
+    display: inline-block!important;
+    text-decoration: none!important;
+    border-radius: 3px!important;
+    background: #3498db!important;
+    color: #FFFFFF!important;
+    font-size: 15px!important;
+    font-weight: bold;
+}
+
+
+
+    .button:hover
+    {
+        background: #3cb0fd!important;
+        background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db)!important;
+        background-image: -moz-linear-gradient(top, #3cb0fd, #3498db)!important;
+        background-image: -ms-linear-gradient(top, #3cb0fd, #3498db)!important;
+        background-image: -o-linear-gradient(top, #3cb0fd, #3498db)!important;
+        background-image: linear-gradient(to bottom, #3cb0fd, #3498db)!important;
+        text-decoration: none!important;
+    }
+
+select.s-hov
+{
+    font-size: 13pt;
+    height: 30px;
+    width: 215px;
+}
+input.inp-big
+{
+    font-size:13pt; 
+    height:30px; 
+    width:300px;
+}
+input.acno
+{
+    font-size:13pt; 
+    height:30px; 
+    width:350px;
+}
+input.nos
+{
+    font-size:13pt; 
+    height:30px; 
+    width:122px;
+}
+.Border
+{
+    float:left;
+   width:98%;
+ border:1px solid #3cb0fd;
+ 
+}
+.space
+{
+    width:100%;
+    float:left;
+    padding-bottom:20px;
+}

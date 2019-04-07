@@ -1,0 +1,37 @@
+﻿@model List<ApplicationDTO.TicketHistoryDTO>
+@{
+    ViewBag.Title = "TicketHistory";
+    Layout = null;
+}
+
+
+<div>
+@foreach (var item in Model)
+{       @Html.Label("RemarkBy:") @item.Name <br />
+        @Html.Label("Remark:")@item.Remark <br />
+        if(item.RefundReason==null)
+        {
+         @Html.Label("RefundReason:---") <br />
+        }
+        else{
+        @Html.Label("RefundReason:")@item.RefundReason <br />
+        }
+        if(item.DispositionType==null)
+        {
+        @Html.Label("DispositionCase:---") <br />
+        } else
+       {
+        @Html.Label("DispositionCase:")@item.DispositionType <br />    
+        }  
+        if(item.Solution==null)
+        {
+        @Html.Label("Solution:----") <br />
+        }
+        else
+        {
+         @Html.Label("Solution:")@item.Solution <br />
+        }
+        <hr />
+}
+</div>
+@*<p><a href="javascript:void(0);" class="close">Close this Window</a> </p>*@

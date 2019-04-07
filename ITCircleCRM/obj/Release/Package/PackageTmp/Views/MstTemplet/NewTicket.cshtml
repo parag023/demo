@@ -1,0 +1,186 @@
+﻿@using ApplicationDTO;
+@using System.Web.Mvc;
+@model NewTicketDTO
+@{
+    ViewBag.Title = "NewTicket";
+    Layout = "~/Views/Shared/_MstLayoutPage.cshtml";
+}
+
+<script>
+    var roleId ="@Session["UserRole"]";
+    $(document).ready(function () {
+        if (roleId == "5") {
+            $('#ulCSComment li input').attr('disabled', 'disabled');
+            $('#ulCSComment li select').attr('disabled', 'disabled');
+            $('#ulUpdate').css('display', 'none');
+            $('#ulAddComment').css('display', 'flex');
+        }
+        if (roleId == "3") {
+            $('#ulTechComment').hide();
+        }
+    });
+
+
+function changetextbox()
+{
+    if (document.getElementById("CSRefundType").value == "5" ) {
+
+        document.getElementById("txtRR").disabled = false;
+    }
+    else if (document.getElementById("CSRefundType").value == "4" || document.getElementById("CSRefundType").value == "6")
+    {
+        document.getElementById("CSAssignTo").disabled = true;
+        document.getElementById("CSAssignTo").value='';
+    }
+    else if (document.getElementById("CSRefundType").value == "1" || document.getElementById("CSRefundType").value == "2"||
+        document.getElementById("CSRefundType").value == "3" || document.getElementById("CSRefundType").value == "5")
+    {
+        document.getElementById("CSAssignTo").disabled = false;
+        document.getElementById("txtRR").disabled = true;
+    }
+    else 
+    {
+        document.getElementById("txtRR").disabled = true;
+    }
+}
+</script>
+
+@using (Html.BeginForm("NewTicket", "MstTemplet", FormMethod.Post))
+{
+@*<form method="post" action="Newticket">*@
+    <div class="content2">
+        <div class="upper">
+            @*<h2>New Ticket<span class="up-s">
+                <input type="search" id="search" placeholder="Search..." /><a href=""><img src="~/Content/images/Search.png" /></a></span>
+
+            </h2>*@
+            <div class="inner-content2">
+                <div class="Border">
+                    <center><h3>@ViewBag.CutomerList[0].Username Comment</h3></center>
+                    <ul>
+                        @Html.HiddenFor(@model => @model.Id, new { @id = "hidId" })
+                        @Html.Hidden("CustomerID", @Request.QueryString["CustomerID"] as String)
+                        @Html.Hidden("ProductId", @Request.QueryString["ProductId"] as String)
+                        <li>
+                            <h3>Customer Name</h3>
+                            <input class="inp-big" type="text" name="CustomerName"  value="@ViewBag.CutomerList[0].CustomerName" size="17"  autocomplete="off" disabled>
+                        </li>
+                        <li>
+                            <h3>E-Mail</h3>
+                            <input class="inp-big" type="text" name="EmailId" value="@ViewBag.CutomerList[0].EmailId" size="17"  autocomplete="off" disabled>
+                        </li>
+                        <li>
+                            <h3>Contact No</h3>
+                            <input type="text" name="ContactNo" value="@ViewBag.CutomerList[0].ContanctNo" size="17" style="font-size: 13pt; height: 30px; width: 179px;" autocomplete="off" disabled>
+                        </li>
+                        <li>
+                            <h3>Account Number</h3>
+                            <input class="acno" type="text" name="AccountNo" value="@ViewBag.CutomerList[0].AccountNo" size="17" autocomplete="off" disabled>
+                        </li>
+                        <li>
+                            <h3>CallType</h3>
+                            <input class="nos" type="text" name="CallType" value="@ViewBag.ProductList[0].CallType" size="17" autocomplete="off" disabled>
+                        </li>
+                        <li>
+                            <h3>Sub CallType</h3>
+                            <input class="nos" type="text" name="SubCallType" value="@ViewBag.ProductList[0].SubCallType" size="17" autocomplete="off" disabled>
+                        </li>
+                        <li>
+                            <h3>Subscription Type</h3>
+                            <input class="nos" type="text" name="SubcriptionType" value="@ViewBag.ProductList[0].SubcriptionType" size="17" autocomplete="off" disabled>
+                        </li>
+                        <li>
+                            <h3>No Of System</h3>
+                            <input class="nos" type="text" name="NoOfSystem" value="@ViewBag.ProductList[0].NoOfSystem" size="17" autocomplete="off" disabled>
+                        </li>
+                        <li>
+                            <h3>Payment Mode</h3>
+                            <input class="nos" type="text" name="PaymentMode" value="@ViewBag.ProductList[0].PaymentMode" size="17"autocomplete="off"  disabled>
+                        </li>
+                        <li>
+                            <h3>CallStatus</h3>
+                            <input class="nos" type="text" name="CallStatus" value="@ViewBag.ProductList[0].CallStatus" size="17" autocomplete="off" disabled>
+                        </li>
+                        <li>
+                            <h3>Problem Reported</h3>
+                            @*<input class="inp-big" type="text" name="ProblemReported" onclick="this.value = '';" onfocus="this.select()" onblur="this.value=!this.value?'':this.value;" value="" size="17"  disabled>*@
+                            <input type="text" name="Remark" value="@ViewBag.ProductList[0].Remark"  style="font-size: 13pt; width: 940px; height:100px;" disabled/>
+                        </li>
+                    </ul>
+                </div>
+                <div class="space"></div>
+                <div class="Border">
+                    <ul id="ulCSComment">
+                        <center><h3>@Session["username"] Comment</h3></center>
+                        @*<li><h3>Case Report</h3>
+                        <input type="text" name="CaseReport" onclick="this.value = '';" onfocus="this.select()" onblur="this.value=!this.value?'':this.value;" value="@Model.CaseReport" size="17" style="font-size: 13pt; height: 30px; width: 150px;"></li>*@
+                      
+                        <li>
+                            <h3>Dispostion Case</h3>
+                            @Html.DropDownList("CSRefundType", new SelectList(ViewBag.RefundeType, "value", "text" ),"--Select DispostionCase--", new { @class = "s-hov",@id="CSRefundType",@onchange="changetextbox (this.value);" })
+                        </li>
+                        <li>
+                            <h3>Assign To</h3>
+                            @Html.DropDownList("CSAssignTo", new SelectList(ViewBag.AssignTo, "value", "text"),"--Select AssignTo--", new { @class = "s-hov",@id="CSAssignTo" })
+                        </li>
+                          <li>
+                            <h3>Refund Reason</h3>
+                            @*<input type="text" id="txtRR" name="RefundReason"onblur="this.value=!this.value?'':this.value;" value="@Model.RefundReason" size="17" style="font-size: 13pt; height: 30px; width: 150px;" autocomplete="off">*@
+                             @Html.TextArea("txtRR",@Model.RefundReason,new {cols="35", rows="5", @id="txtRR",style="width: 600px;",@disabled="disabled"})
+                        </li>
+                        <li>
+                            <h3>Remark</h3>
+                            @*<input type="text" name="Solution" value="@Model.Solution"  style="font-size: 13pt; width: 940px; height:100px;" autocomplete="off" aria-multiline required/>*@
+                            @Html.TextArea("Solution",@Model.Solution, new {cols="40", rows="6", style="width: 900px;" })
+                        </li>
+                    </ul>
+                </div>
+                <div class="space"></div>
+                @*<div class="Border">
+                    <ul id="ulTechComment">
+                        <center><h3>TECH COMMENT</h3></center>
+                        <li>
+                        <h3>Dispostion Case</h3>
+                            @Html.DropDownList("RefundType", new SelectList(ViewBag.RefundeType, "value", "text", "--Select DispotionCase--"), new { @class = "s-hov" })
+                        </li>
+                        <li>
+                        <h3>Assign To</h3>
+                         @Html.DropDownList("AssignTo", new SelectList(ViewBag.AssignTo, "value", "text", "--Select AssignTo--"), new { @class = "s-hov" })
+                        </li>
+                        <li>
+                        <h3>Solution</h3>
+                        @Html.TextArea("Solution1", new {cols="40", rows="6", style="width: 900px;" })
+                        </li>
+                        <li>
+                        <h3>Remark</h3>
+                        @Html.TextArea("Remark", new {cols="40", rows="6", style="width: 900px;" })
+                        </li>
+                    </ul>
+                </div>*@
+
+                <ul class="submit-bt" id="ulUpdate">
+                    @*<a href="#" class="btn">Submit</a>*@
+
+                    @if(@Model.Id > 0)
+                    {
+                        <input type="submit" id="btnUpdateTicket" name="Command" value="UpdateTicket" class="button" />
+                    }
+                    else
+                    {
+                        <input type="submit" id="btnInsertTicket" name="Command" value="AddTicket" class="button" />
+                    }
+                </ul>
+                <ul class="submit-bt" id="ulAddComment" style="display: none;">
+                    <input type="submit" id="btnAddComment" name="Command" value="Add Comment" class="button" />
+                </ul>
+            </div>
+        </div>
+        <div class="">
+        </div>
+    </div>
+@*</form>*@
+}
+
+
+
+
